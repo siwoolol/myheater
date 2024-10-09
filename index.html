@@ -17,38 +17,31 @@
         <img src="img/heater1.png" class="heater">
     </div>
 
-    <div class="modal">
-        <div class="modal-inner">
-            <input placeholder="nickname" maxlength="9">
-            <button class="ok">OK</button>
-        </div>
-    </div>
-
     <div class="heater-box">
-        <button class="plus" onclick="plus()">
+        <button class="plus" onclick="increaseTemp()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
             </svg>
         </button>
-        <button class="minus" onclick="minus()">
+        <button class="minus" onclick="decreaseTemp()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
             </svg>
         </button>
 
         <script>
-            let temp = document.getElementByClassName("temp").value;
+            let currentTemp = 30; // Define the initial temperature
 
-            function plus() {
-                let tempText = document.getElementsByClassName("temp");
-                let newTemp = (temp+=1);
-                tempText.innerHTML = newTemp;
+            function increaseTemp() {
+                currentTemp++; // Increment the temperature
+                document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
             }
 
-            function minus() {
-                let tempText = document.getElementsByClassName("temp");
-                let newTemp = (temp-=1);
-                tempText.innerHTML = newTemp;
+            function decreaseTemp() {
+                if (currentTemp > 0) { // Check if temperature is above 0
+                    currentTemp--;
+                }
+                document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
             }
         </script>
         
