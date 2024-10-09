@@ -5,29 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Heater</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="css/stylesheet.css"/>
 </head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <body style="margin: 0;">
 
     <div class="heater-box">
-        <div class="temp-box">
-            <h4 class="temp"></h4>
-        </div>
         <div class="who-alert"><p></p></div>
         <div class="who"><p></p></div>
         <img src="img/heater1.png" class="heater">
     </div>
+    <h1></h1>
+
+    <div class="temp-box">
+        <p><b class="temp">30</b>°C</p>
+    </div>
 
     <div class="heater-box">
-        <button class="plus" onclick="increaseTemp()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-            </svg>
-        </button>
-        <button class="minus" onclick="decreaseTemp()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-            </svg>
-        </button>
+        <button class="plus" onclick="increaseTemp()">+</button>
+        <button class="minus" onclick="decreaseTemp()">-</button>
 
         <script>
             let currentTemp = 30; // Define the initial temperature
@@ -52,7 +50,7 @@
                 audio.play();
 
                 var onbutton = document.getElementById(".brown-noise2");
-                onbutton.style.opacity = "0";
+                onbutton.style.opacity = "20%";
                 var offbutton = document.getElementById(".brown-noise3");
                 offbutton.style.opacity = "100%";
             }
@@ -62,35 +60,35 @@
                 audio.pause();
 
                 var offbutton = document.getElementById(".brown-noise3");
-                offbutton.style.opacity = "0";
+                offbutton.style.opacity = "20%";
                 var onbutton = document.getElementById(".brown-noise2");
                 onbutton.style.opacity = "100%";
             }
         </script>
         
         <button id=".brown-noise2" value="PLAY" onclick="on()">ON</button>
-        <button id=".brown-noise3" value="STOP" onclick="off()" style="opacity: 0;">OFF</button>
+        <button id=".brown-noise3" value="STOP" onclick="off()" style="opacity: 20%;">OFF</button>
         <audio id="audio" src="brown-noise.ogg" autoplay loop></audio>
     </div>
     <div class="heater-box" style="margin-top: 20px;">
     </div>
 
-    <!-- stats and about -->
-    <dialog style="font-size: 11px;">
-        <p>+ button pressed count : <span class="plusCount">0</span></p>
-        <p>- button pressed count : <span class="minusCount">0</span></p>
-        <button class="close-dialog1" autofocus>Close</button>
-    </dialog>
-    <span class="show-dialog1" style="position: fixed; bottom: 10px; right: 45px; font-size: 9px;">Stats</span>
+    <div class="dialogs">
+        <dialog style="font-size: 11px;">
+            <p>+ button pressed count : <span class="plusCount">0</span></p>
+            <p>- button pressed count : <span class="minusCount">0</span></p>
+            <button class="close-dialog1" autofocus>Close</button>
+        </dialog>
+        <span class="show-dialog1">Stats</span>
 
-    <dialog style="font-size: 11px;">
-        <p>- Brown noise generator to focus and relax</p>
-        <p>- click on button to turn on heater</p>
-        <p>- Made by Github Rootpye</p>
-        <button class="close-dialog2" autofocus>Close</button>
-    </dialog>
-    <span class="show-dialog2" style="position: fixed; bottom: 10px; right: 10px; font-size: 9px;">About</span>
-
+        <dialog style="font-size: 11px;">
+            <p>- Brown noise generator to focus and relax</p>
+            <p>- click on button to turn on heater</p>
+            <p>- Made by Github Rootpye</p>
+            <button class="close-dialog2" autofocus>Close</button>
+        </dialog>
+        <span class="show-dialog2">About</span>
+    </div>
 
     <script>
         const dialog = document.querySelectorAll("dialog");
@@ -121,136 +119,5 @@
             dialog[1].close();
         });
     </script>
-    <style>
-        .modal {
-            background: white;
-            position: absolute;
-            width: 100%;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal input {
-            padding: 5px;
-        }
-
-        button {
-            padding: 5px;
-            background: #272727;
-            color: white;
-            border-radius: 5px;
-        }
-
-        button:active {
-            background: #6b6b6b;
-        }
-
-        .heater-box {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .heater {
-            width: 350px;
-        }
-
-        .air {
-            position: absolute;
-            visibility: hidden;
-        }
-
-        .air-animate {
-            visibility: visible;
-            clip-path: inset(0 0 0 0);
-            animation: reveal 2s forwards;
-            animation-iteration-count: infinite;
-        }
-
-        @keyframes reveal {
-            0% {
-                clip-path: inset(0 0 100% 0);
-                opacity: 0.9;
-            }
-            50% {
-                opacity: 0.7;
-            }
-            100% {
-                clip-path: inset(0 0 0 0);
-                opacity: 0;
-            }
-        }
-
-        .flip {
-            transition: transform 1s;
-            transform: translateY(114px) scaleY(-1);
-        }
-
-        .temp-box {
-            position: absolute;
-            top: 50px;
-            opacity: 1;
-            transition: all 1s;
-        }
-
-        .who {
-            position: absolute;
-            font-size: 11px;
-            top: 20px;
-        }
-
-        .who p {
-            transition: opacity 1s;
-            opacity: 1;
-        }
-
-        .who-alert p {
-            transition: opacity 0.5s;
-            opacity: 1;
-        }
-
-        .who-alert {
-            position: absolute;
-            font-size: 11px;
-            top: 0px;
-        }
-
-        .who .who-fade, .who-alert .who-fade {
-            opacity: 0;
-        }
-
-        .rainbow {
-            background: linear-gradient(45deg, rgba(255, 0, 0, 0.537), rgba(255, 255, 0, 0.537));
-            color: black;
-            transition: all 1s;
-        }
-    </style>
-
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
-        integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
-        crossorigin="anonymous"></script>
 </body>
-
-    <script>
-        var tempElement = document.querySelector('.temp')
-        var whoElement = document.querySelector('.who')
-        var whoAlertElement = document.querySelector('.who-alert')
-        var currentTemp = 30;
-        var isOnline = false;
-        var isSoundOn = false;
-
-        var socket;
-
-        var username = ''
-        document.querySelector('.ok').addEventListener('click', () => {
-            //save name
-            username = document.querySelector('input').value
-            document.querySelector('.modal').style.display = 'none'
-
-            turnOn()
-        })
-    </script>
 </html>

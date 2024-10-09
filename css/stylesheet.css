@@ -1,0 +1,60 @@
+* {
+    font-family: "Poppins", sans-serif;
+    animation: ease all 0.4s;
+}
+
+body {
+    background-color: #0d0d0d;
+}
+
+.heater-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.heater {
+    width: 350px;
+}
+
+.temp-box {
+    margin-top: -60px;
+    font-weight: 650;
+    color: #cdcccd;
+    font-size: 30pt;
+    border-radius: 25px;
+    text-align: center;
+}
+
+button {
+    font-weight: 600;
+    background-color: #cdcccd;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 65px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    border: 0;
+    margin: 5px;
+}
+
+button:hover {
+    background: white;
+}
+
+button:active {
+    background: white;
+}
+
+dialog {
+    border-radius: 20px;
+    transition: opacity 0.3s ease;
+}
+
+dialog > button {
+    font-size: 10pt;
+}
+
+.show-dialog1, .show-dialog2 {
+    color: #cdcccd;
+    font-size: 12.5pt;
+}
