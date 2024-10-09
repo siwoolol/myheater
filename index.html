@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Heater</title>
+</head>
+<body style="margin: 0;">
+
+    <div class="heater-box">
+        <div class="temp-box">
+            <h4 class="temp"></h4>
+        </div>
+        <div class="who-alert"><p></p></div>
+        <div class="who"><p></p></div>
+        <img src="heater1.png" class="heater">
+    </div>
+
+    <div class="modal">
+        <div class="modal-inner">
+            <input placeholder="nickname" maxlength="9">
+            <button class="ok">OK</button>
+        </div>
+    </div>
+
+    <div class="heater-box">
+        <button class="plus" onclick="plus()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+            </svg>
+        </button>
+        <button class="minus" onclick="minus()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+            </svg>
+        </button>
+
+        <script>
+            let temp = document.getElementByClassName("temp").value;
+
+            function plus() {
+                let tempText = document.getElementsByClassName("temp");
+                let newTemp = (temp+=1);
+                tempText.innerHTML = newTemp;
+            }
+
+            function minus() {
+                let tempText = document.getElementsByClassName("temp");
+                let newTemp = (temp-=1);
+                tempText.innerHTML = newTemp;
+            }
+        </script>
+        
+        <!-- sound button -->
+        <script>
+            function on() {
+                var audio = document.getElementById("audio");
+                audio.play();
+
+                var onbutton = document.getElementById(".brown-noise2");
+                onbutton.style.opacity = "0";
+                var offbutton = document.getElementById(".brown-noise3");
+                offbutton.style.opacity = "100%";
+            }
+
+            function off() {
+                var audio = document.getElementById("audio");
+                audio.pause();
+
+                var offbutton = document.getElementById(".brown-noise3");
+                offbutton.style.opacity = "0";
+                var onbutton = document.getElementById(".brown-noise2");
+                onbutton.style.opacity = "100%";
+            }
+        </script>
+        
+        <button id=".brown-noise2" value="PLAY" onclick="on()">ON</button>
+        <button id=".brown-noise3" value="STOP" onclick="off()" style="opacity: 0;">OFF</button>
+        <audio id="audio" src="brown-noise.ogg" autoplay loop></audio>
+    </div>
+    <div class="heater-box" style="margin-top: 20px;">
+    </div>
+
+    <!-- stats and about -->
+    <dialog style="font-size: 11px;">
+        <p>+ button pressed count : <span class="plusCount">0</span></p>
+        <p>- button pressed count : <span class="minusCount">0</span></p>
+        <button class="close-dialog1" autofocus>Close</button>
+    </dialog>
+    <span class="show-dialog1" style="position: fixed; bottom: 10px; right: 45px; font-size: 9px;">Stats</span>
+
+    <dialog style="font-size: 11px;">
+        <p>- Brown noise generator to focus and relax</p>
+        <p>- click on button to turn on heater</p>
+        <p>- Made by Github Rootpye</p>
+        <button class="close-dialog2" autofocus>Close</button>
+    </dialog>
+    <span class="show-dialog2" style="position: fixed; bottom: 10px; right: 10px; font-size: 9px;">About</span>
+
+
+    <script>
+        const dialog = document.querySelectorAll("dialog");
+        const showButton1 = document.querySelector(".show-dialog1");
+        const showButton2 = document.querySelector(".show-dialog2");
+        const closeButton1 = document.querySelector(".close-dialog1");
+        const closeButton2 = document.querySelector(".close-dialog2");
+
+        // stats modal
+        showButton1.addEventListener("click", () => {
+            var plus = localStorage.getItem('+')
+            var minus = localStorage.getItem('-')
+            document.querySelector('.plusCount').innerHTML = plus || '0'
+            document.querySelector('.minusCount').innerHTML = minus || '0'
+            dialog[0].showModal();
+        });
+
+        closeButton1.addEventListener("click", () => {
+            dialog[0].close();
+        });
+
+        // about modal
+        showButton2.addEventListener("click", () => {
+            dialog[1].showModal();
+        });
+
+        closeButton2.addEventListener("click", () => {
+            dialog[1].close();
+        });
+    </script>
+    <style>
+        .modal {
+            background: white;
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal input {
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px;
+            background: #272727;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:active {
+            background: #6b6b6b;
+        }
+
+        .heater-box {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .heater {
+            width: 350px;
+        }
+
+        .air {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        .air-animate {
+            visibility: visible;
+            clip-path: inset(0 0 0 0);
+            animation: reveal 2s forwards;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes reveal {
+            0% {
+                clip-path: inset(0 0 100% 0);
+                opacity: 0.9;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                clip-path: inset(0 0 0 0);
+                opacity: 0;
+            }
+        }
+
+        .flip {
+            transition: transform 1s;
+            transform: translateY(114px) scaleY(-1);
+        }
+
+        .temp-box {
+            position: absolute;
+            top: 50px;
+            opacity: 1;
+            transition: all 1s;
+        }
+
+        .who {
+            position: absolute;
+            font-size: 11px;
+            top: 20px;
+        }
+
+        .who p {
+            transition: opacity 1s;
+            opacity: 1;
+        }
+
+        .who-alert p {
+            transition: opacity 0.5s;
+            opacity: 1;
+        }
+
+        .who-alert {
+            position: absolute;
+            font-size: 11px;
+            top: 0px;
+        }
+
+        .who .who-fade, .who-alert .who-fade {
+            opacity: 0;
+        }
+
+        .rainbow {
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.537), rgba(255, 255, 0, 0.537));
+            color: black;
+            transition: all 1s;
+        }
+    </style>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+        integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+        crossorigin="anonymous"></script>
+</body>
+
+    <script>
+        var tempElement = document.querySelector('.temp')
+        var whoElement = document.querySelector('.who')
+        var whoAlertElement = document.querySelector('.who-alert')
+        var currentTemp = 30;
+        var isOnline = false;
+        var isSoundOn = false;
+
+        var socket;
+
+        var username = ''
+        document.querySelector('.ok').addEventListener('click', () => {
+            //save name
+            username = document.querySelector('input').value
+            document.querySelector('.modal').style.display = 'none'
+
+            turnOn()
+        })
+    </script>
+</html>
