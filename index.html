@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/stylesheet.css"/>
     <script src="/assets/js/heaterfunc.js"></script>
+    <script src="/assets/js/statscounter.js"></script>
 </head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +37,7 @@
     </div>
 
     <div class="dialogs">
+        <!-- Stats Dialog -->
         <dialog style="font-size: 11px;">
             <p>+ button pressed count : <span class="plusCount">0</span></p>
             <p>- button pressed count : <span class="minusCount">0</span></p>
@@ -43,43 +45,14 @@
         </dialog>
         <span class="show-dialog1">Stats</span>
 
+        <!-- About Dialog -->
         <dialog style="font-size: 11px;">
-            <p>- Brown noise generator to focus and relax</p>
-            <p>- click on button to turn on heater</p>
-            <p>- Made by Github Rootpye</p>
+            <p>- Brown noise generator to focus and relax to your activities</p>
+            <p>- Click On button to turn on heater, + - Button to control the temp</p>
+            <a href="https://github.com/siwoolol/myheater">- Source Code On GitHub</a>
             <button class="close-dialog2" autofocus>Close</button>
         </dialog>
         <span class="show-dialog2">About</span>
     </div>
-
-    <script>
-        const dialog = document.querySelectorAll("dialog");
-        const showButton1 = document.querySelector(".show-dialog1");
-        const showButton2 = document.querySelector(".show-dialog2");
-        const closeButton1 = document.querySelector(".close-dialog1");
-        const closeButton2 = document.querySelector(".close-dialog2");
-
-        // stats modal
-        showButton1.addEventListener("click", () => {
-            var plus = localStorage.getItem('+')
-            var minus = localStorage.getItem('-')
-            document.querySelector('.plusCount').innerHTML = plus || '0'
-            document.querySelector('.minusCount').innerHTML = minus || '0'
-            dialog[0].showModal();
-        });
-
-        closeButton1.addEventListener("click", () => {
-            dialog[0].close();
-        });
-
-        // about modal
-        showButton2.addEventListener("click", () => {
-            dialog[1].showModal();
-        });
-
-        closeButton2.addEventListener("click", () => {
-            dialog[1].close();
-        });
-    </script>
 </body>
 </html>
