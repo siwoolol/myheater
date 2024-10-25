@@ -1,14 +1,14 @@
-let currentTemp = 30; // Define the initial temperature
+let currentTemp = 69;
 
 function increaseTemp() {
-    if (currentTemp < 69) {
-       currentTemp++; // Increment the temperature
+    if (currentTemp < 694) {
+       currentTemp++;
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
 
 function decreaseTemp() {
-    if (currentTemp > 0) { // Check if temperature is above 0
+    if (currentTemp > 69) {
         currentTemp--;
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
