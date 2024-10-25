@@ -1,7 +1,9 @@
 let currentTemp = 30; // Define the initial temperature
 
 function increaseTemp() {
-    currentTemp++; // Increment the temperature
+    if (currentTemp < 69) {
+       currentTemp++; // Increment the temperature
+    }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
 
