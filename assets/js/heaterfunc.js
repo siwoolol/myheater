@@ -1,14 +1,14 @@
-let currentTemp = 69;
+let currentTemp = 30;
 
 function increaseTemp() {
-    if (currentTemp < 694) {
+    if (currentTemp < 69) {
        currentTemp++;
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
 
 function decreaseTemp() {
-    if (currentTemp > 69) {
+    if (currentTemp > 30) {
         currentTemp--;
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
