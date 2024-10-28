@@ -5,8 +5,8 @@ function increaseTemp() {
 var plusButton = document.getElementbyClassName(".plus");
 
     if (currentTemp < 30) {
-       currentTemp++;
-       plusButton.style.opacity = "100%";
+        currentTemp++;
+        plusButton.style.opacity = "100%";
     } else {
         plusButton.style.opacity = "20%";
     }
