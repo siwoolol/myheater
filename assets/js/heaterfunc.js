@@ -1,7 +1,6 @@
 let currentTemp = 30;
 
 function increaseTemp() {
-
     var plusButton = document.getElementsbyClassName("plus");
 
     if (currentTemp < 30) {
@@ -14,7 +13,6 @@ function increaseTemp() {
 }
 
 function decreaseTemp() {
-
     var minusButton = document.getElementsbyClassName("minus");
 
     if (currentTemp > 21) {
