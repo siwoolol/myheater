@@ -2,17 +2,20 @@ let currentTemp = 30;
 
 function increaseTemp() {
     var plusButton = document.getElementById(".plus");
+    var minusButton = document.getElementById(".minus");
 
     if (currentTemp < 30) {
         currentTemp++;
         plusButton.style.opacity = "100%";
     } else {
         plusButton.style.opacity = "20%";
+        minusButton.style.opacity = "100%";
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
 
 function decreaseTemp() {
+    var plusButton = document.getElementById(".plus");
     var minusButton = document.getElementById(".minus");
 
     if (currentTemp > 21) {
@@ -20,6 +23,7 @@ function decreaseTemp() {
         minusButton.style.opacity = "100%";
     } else {
         minusButton.style.opacity = "20%";
+        plusButton.style.opacity = "100%";
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
