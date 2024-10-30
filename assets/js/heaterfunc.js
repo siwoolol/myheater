@@ -6,10 +6,15 @@ function increaseTemp() {
 
     if (currentTemp < 30) {
         currentTemp++;
-        plusButton.style.opacity = "100%";
     } else {
         plusButton.style.opacity = "20%";
         minusButton.style.opacity = "100%";
+    }
+
+    if (currentTemp < 29) {
+        plusButton.style.opacity = "20%";
+    } else if (currentTemp > 29) {
+        plusButton.style.opacity = "100%";
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
@@ -22,8 +27,13 @@ function decreaseTemp() {
         currentTemp--;
         minusButton.style.opacity = "100%";
     } else {
-        minusButton.style.opacity = "20%";
         plusButton.style.opacity = "100%";
+    }
+
+    if (currentTemp > 22) {
+        minusButton.style.opacity = "20%";
+    } else if (current < 22) {
+        minusButton.style.opacity = "100";
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
