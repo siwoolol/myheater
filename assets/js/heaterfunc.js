@@ -12,9 +12,9 @@ function increaseTemp() {
     }
 
     if (currentTemp < 29) {
-        plusButton.style.opacity = "20%";
-    } else if (currentTemp > 29) {
         plusButton.style.opacity = "100%";
+    } else if (currentTemp > 29) {
+        plusButton.style.opacity = "20%";
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
@@ -31,9 +31,9 @@ function decreaseTemp() {
     }
 
     if (currentTemp > 22) {
-        minusButton.style.opacity = "20%";
+        minusButton.style.opacity = "100%";
     } else if (current < 22) {
-        minusButton.style.opacity = "100";
+        minusButton.style.opacity = "20";
     }
     document.getElementsByClassName("temp")[0].innerHTML = currentTemp;
 }
